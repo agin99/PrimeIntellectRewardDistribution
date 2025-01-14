@@ -2,17 +2,20 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
-import {Counter} from "../src/Counter.sol";
+import {RewardDistributor} from "../src/RewardDistributor.sol";
 
-contract CounterScript is Script {
-    Counter public counter;
+contract RewardDistributorScript is Script {
+    RewardDistributor public distributor;
 
     function setUp() public {}
 
     function run() public {
         vm.startBroadcast();
 
-        counter = new Counter();
+        distributor = new RewardDistributor(
+            100,
+            10
+        );
 
         vm.stopBroadcast();
     }
